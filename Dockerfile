@@ -1,1 +1,2 @@
-FROM metabase/metabase:latest
+FROM mediagis/nominatim:4.4
+

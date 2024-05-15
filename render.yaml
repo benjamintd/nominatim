@@ -1,16 +1,11 @@
 services:
   - type: web
-    name: metabase
+    name: nominatim
     env: docker
-    repo: https://github.com/render-examples/metabase.git # optional
     plan: standard # ensure that metabase has at least 2GB of RAM (defaults to starter)
     autoDeploy: false
     envVars:
-      - key: MB_DB_CONNECTION_URI
-        fromDatabase:
-          name: elephant
-          property: connectionString
-databases:
-  - name: elephant
-    databaseName: metabasedb
-    ipAllowList: [] # only allow internal connections
+      - key: PBF_URL
+        value: https://download.geofabrik.de/europe/france-latest.osm.pbf
+      - key: REPLICATION_URL
+        value: https://download.geofabrik.de/europe/france-updates/
